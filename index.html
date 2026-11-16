@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALI>MOTO F | Dirt Bikes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ background:#090909;
+ color:#fff;
+ font-family:Inter,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+:root{--red:#ff0000;--gray:#999}
+header{
+ position:sticky;top:0;z-index:10;
+ background:#090909ed;
+ border-bottom:1px solid #292929;
+ backdrop-filter:blur(15px);
+}
+nav{
+ max-width:1250px;margin:auto;padding:19px 24px;
+ display:flex;justify-content:space-between;align-items:center;gap:15px;
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--red)}
+.navlinks{display:flex;gap:25px;font-size:12px;text-transform:uppercase;color:#bbb}
+.navlinks a:hover{color:var(--red)}
+.cartbtn,.redbtn{
+ background:var(--red);color:white;border:0;
+ padding:12px 17px;border-radius:4px;font-weight:800;
+ cursor:pointer;
+}
+.hero{
+ min-height:610px;position:relative;
+ display:flex;align-items:center;
+ background:
+ linear-gradient(90deg,#080808 5%,#080808db 43%,#08080830 100%),
+ url('WhatsApp Image 2026-11-16 at 9.25.25 PM.jpeg') center/cover;
+}
+.herocontent{max-width:1250px;width:100%;margin:auto;padding:65px 25px}
+.eyebrow{color:var(--red);font-size:12px;font-weight:900;letter-spacing:4px}
+.hero h1{
+ font-size:clamp(48px,8vw,95px);
+ line-height:.94;margin:20px 0;letter-spacing:-4px;
+}
+.hero h1 span{color:var(--red)}
+.hero p{color:#bbb;max-width:480px;line-height:1.8}
+.herobtns{display:flex;gap:12px;margin-top:30px}
+.outlinebtn{
+ padding:12px 18px;border:1px solid #777;
+ background:transparent;color:white;border-radius:4px;font-weight:700;
+}
+.section{max-width:1250px;margin:auto;padding:70px 24px}
+.heading{margin-bottom:30px}
+.heading h2{font-size:32px;margin-top:10px}
+.heading p{color:var(--gray);font-size:13px;margin-top:8px}
+.categories{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+}
+.cat{
+ background:#151515;border:1px solid #303030;
+ padding:25px 18px;border-radius:5px;
+ cursor:pointer;transition:.25s;
+}
+.cat:hover{border-color:var(--red);transform:translateY(-5px)}
+.cat span{font-size:27px;color:var(--red)}
+.cat h3{font-size:14px;margin-top:15px}
+.cat p{color:#888;font-size:11px;margin-top:7px}
+.toolbar{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:25px;
+}
+.search{
+ background:#171717;border:1px solid #333;
+ padding:12px;color:white;border-radius:4px;width:220px;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+ padding:9px 14px;border:1px solid #333;
+ background:#151515;color:#aaa;border-radius:4px;
+ cursor:pointer;font-size:11px;
+}
+.filter.active,.filter:hover{background:var(--red);color:white;border-color:var(--red)}
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.bike{
+ background:#141414;border:1px solid #292929;
+ border-radius:6px;overflow:hidden;transition:.25s;
+}
+.bike:hover{transform:translateY(-6px);border-color:var(--red)}
+.bikeimg{height:240px;background:#202020;position:relative}
+.bikeimg img{width:100%;height:100%;object-fit:cover}
+.badge{
+ position:absolute;top:14px;left:14px;
+ background:var(--red);padding:7px 10px;font-size:10px;font-weight:800;
+}
+.bikeinfo{padding:19px}
+.brand{font-size:10px;color:var(--red);font-weight:800;letter-spacing:2px}
+.bikeinfo h3{font-size:19px;margin:10px 0}
+.specs{
+ display:flex;gap:15px;flex-wrap:wrap;
+ color:#999;font-size:11px;padding:13px 0;
+ border-top:1px solid #292929;border-bottom:1px solid #292929;
+}
+.price{font-size:22px;font-weight:900;margin-top:15px}
+.price small{font-size:10px;color:#888}
+.bikebottom{display:flex;justify-content:space-between;align-items:center;margin-top:17px}
+.details{
+ background:transparent;border:1px solid #555;
+ color:white;padding:10px 13px;border-radius:4px;cursor:pointer;
+}
+.details:hover{background:var(--red);border-color:var(--red)}
+.banner{
+ margin:0 auto 70px;max-width:1200px;
+ padding:55px 35px;
+ background:linear-gradient(90deg,#24100e,#111);
+ border:1px solid #48201d;
+ display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.banner h2{font-size:35px;margin:12px 0}
+.banner p{color:#aaa;font-size:13px}
+footer{border-top:1px solid #292929;padding:35px 24px;color:#888;font-size:11px}
+.foot{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.overlay{
+ display:none;position:fixed;inset:0;background:#000c;
+ z-index:30;align-items:center;justify-content:center;padding:15px;
+}
+.overlay.show{display:flex}
+.modal{
+ background:#151515;border:1px solid #444;
+ padding:25px;max-width:520px;width:100%;border-radius:7px;
+ max-height:90vh;overflow:auto;
+}
+.modal img{width:100%;height:230px;object-fit:cover;margin:15px 0}
+.modal h2{margin:10px 0}
+.modal p{color:#aaa;line-height:1.7;font-size:13px}
+.modalhead{display:flex;justify-content:space-between}
+.close{background:none;border:0;color:white;font-size:25px;cursor:pointer}
+.cartrow{padding:14px 0;border-bottom:1px solid #333;display:flex;justify-content:space-between;font-size:13px}
+.carttotal{display:flex;justify-content:space-between;margin:22px 0;font-weight:900}
+@media(max-width:850px){
+ .navlinks{display:none}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .hero{min-height:520px}
+}
+@media(max-width:550px){
+ nav{padding:15px}
+ .logo{font-size:20px}
+ .hero h1{font-size:52px}
+ .section{padding:48px 15px}
+ .grid{grid-template-columns:1fr}
+ .bikeimg{height:240px}
+ .banner{margin:0 15px 50px;display:block}
+ .banner .redbtn{margin-top:20px}
+ .search{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<a href="#" class="logo">ALI>MOT<span>O.</span></a>
+
+<div class="navlinks">
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#bikes">Bikes</a>
+<a href="#contact">Contact</a>
+</div>
+
+<button class="cartbtn" onclick="openCart()">
+CART (<span id="count">0</span>)
+</button>
+<a href="https://www.instagram.com/alihamze_9?psln=MWUxY251ZDdpczhoOQ==">
+Instagram📸
+</a>
+<a href="https://wa.me/961900832" target="_blank">
+    WhatsApp🗨️
+    </a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="herocontent">
+<div class="eyebrow">CHOOSE YOUR MOTO</div>
+<h1>  RIDE<br> BY  <br><span>ALOUCH.</span></h1>
+<p>
+   
+Alouch is the king of ride🏍️<br>
+
+
+</p>
+<div class="herobtns">
+<a class="redbtn" href="#bikes">CHOOSE BIKES ↗</a>
+<a class="outlinebtn" href="#categories">DISCOVER</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="categories">
+<div class="heading">
+<div class="eyebrow">FIND YOUR RIDE</div>
+<h2>Choose your BIKE.</h2>
+<p>Explore our off-road motorcycle collection.</p>
+</div>
+
+<div class="categories">
+<div class="cat" onclick="setFilter('Motocross')">
+<span>01</span><h3>MOTOCROSS</h3><p>Built for racing and speed.</p>
+</div>
+<div class="cat" onclick="setFilter('Enduro')">
+<span>02</span><h3>300cc</h3><p>Made for challenging terrain.</p>
+</div>
+<div class="cat" onclick="setFilter('Trail')">
+<span>03</span><h3>TRAIL BIKES</h3><p>Explore the outdoors.</p>
+</div>
+<div class="cat" onclick="setFilter('Adventure')">
+<span>04</span><h3>ADVENTURE</h3><p>Go further off-road.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="bikes">
+<div class="heading">
+<div class="eyebrow">THE COLLECTION</div>
+<h2>Explore our bikes.</h2>
+<p>Find the motorcycle that matches your style.</p>
+</div>
+
+<div class="toolbar">
+<input class="search" id="search" placeholder="Search model...">
+<div class="filters">
+<button class="filter active" onclick="setFilter('All',this)">ALL</button>
+<button class="filter" onclick="setFilter('Motocross',this)">MOTOCROSS</button>
+<button class="filter" onclick="setFilter('Enduro',this)">ENDURO</button>
+<button class="filter" onclick="setFilter('Trail',this)">TRAIL</button>
+<button class="filter" onclick="setFilter('Adventure',this)">ADVENTURE</button>
+</div>
+</div>
+
+<div class="grid" id="bikeGrid"></div>
+</section>
+
+<section class="banner" id="contact">
+<div>
+<div class="eyebrow">YOUR NEXT LEVEL💫</div>
+<h2>ARE READY TO RIDE ?</h2>
+<p>Find your dream . BIKE.</p>
+</div>
+<a class="redbtn" href="#bikes">FIND YOUR BIKE ↗</a>
+</section>
+
+<footer>
+<div class="foot">
+<div class="logo">ALI><span>MOTO.</span></div>
+<div>ALI · MOTOCROSS · HOT⚡</div>
+<div>© ALI>MOTO F</div>
+</div>
+</footer>
+
+<div class="overlay" id="detailsModal">S
+<div class="modal">
+<div class="modalhead">
+<div class="eyebrow">BIKE DETAILS</div>
+<button class="close" onclick="closeModal('detailsModal')">×</button>
+</div>
+<div id="detailsContent"></div>
+</div>
+</div>
+
+<div class="overlay" id="cartModal" onclick="if(event.target===this)closeModal('cartModal')">
+<div class="modal">
+<div class="modalhead">
+<h2>Your Cart</h2>
+<button class="close" onclick="closeModal('cartModal')">×</button>
+</div>
+<div id="cartItems"></div>
+<div class="carttotal">
+<span>Total</span><span id="total">$0</span>
+</div>
+<button class="redbtn" style="width:100%" onclick="checkout()">ORDER VIA WHATSAPP</button>
+</div>
+</div>
+
+<script>
+
+// ====================================
+// EDIT ALL YOUR MOTORCYCLES HERE
+// ====================================
+
+const bikes = [
+
+{
+id:1,
+brand:"KTM",
+name:"KTM 450 EXC-F",
+category:"Motocross",
+year:"2015",
+cc:"450cc",
+price:10500,
+tag:"BEST SELLER",
+image:"https://images5.1000ps.net/images_bikekat/2025/1-KTM/12675-450_EXC_F_CHAMPION_EDITION/002-638618229887762670-ktm-450-exc-f-champion-edition.jpg",
+description:"High performance motocross motorcycle."
+},
+
+{
+id:2,
+brand:"YAMAHA",
+name:"YZ450F",
+category:"Motocross",
+year:"2025",
+cc:"450cc",
+price:9900,
+tag:"POPULAR",
+image:"https://cdn-0.totalmotorcycle.com/wp-content/uploads/2024/07/2025-Yamaha-YZ450F3.jpg",
+description:"Powerful Yamaha motocross machine."
+},
+
+{
+id:3,
+brand:"HONDA",
+name:"CRF450R",
+category:"Motocross",
+year:"2025",
+cc:"450cc",
+price:9700,
+tag:"NEW",
+image:"https://th.bing.com/th/id/R.5dc01a8c02498a506f9e50e5b80db24c?rik=WRG2LmxV4VB6iQ&pid=ImgRaw&r=0",
+description:"Honda motocross motorcycle."
+},
+
+{
+id:4,
+brand:"KAWASAKI",
+name:"KX450",
+category:"Motocross",
+year:"2025",
+cc:"450cc",
+price:9500,
+tag:"RACING",
+image:"https://cdpcdn.dx1app.com/products/USA/KA/2025/MC/MX/KX_450_SR/50/2000000001.jpg",
+description:"Kawasaki racing offroad bike."
+},
+
+{
+id:5,
+brand:"HUSQVARNA",
+name:"TE 300",
+category:"Enduro",
+year:"2025",
+cc:"501cc",
+price:11500,
+tag:"ENDURO",
+image:"https://tse3.mm.bing.net/th/id/OIP.KokcvZjOnWprM6wIqopJCwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+description:"Designed for demanding enduro terrain."
+},
+
+{
+id:6,
+brand:"GASGAS",
+name:"EC 300",
+category:"Enduro",
+year:"2025",
+cc:"700cc",
+price:10800,
+tag:"OFF ROAD",
+image:"https://www.motoproworks.com/cdn/shop/files/GASGAS-ES700-Motograph-Black-red-race-edition.jpg?v=1738314231&width=3200",
+description:"A versatile off-road motorcycle."
+},
+
+{
+id:7,
+brand:"KTM",
+name:"250 LC4",
+category:"OFF ROAD",
+year:"2025",
+cc:"250cc",
+price:10200,
+tag:"POPULAR",
+image:"https://decallab.com/wp-content/uploads/2023/11/KTM-SX-SXF-EXC-125-250-350-450-dirt-bike-graphics-custom-motocross-supercross-decals-design-factory-decallab-side-black-white-grey-red-Fortuna-450x300.jpg",
+description:"Four stroke enduro motorcycle."
+},
+
+{
+id:8,
+brand:"BETA",
+name:"RR 300",
+category:"OFF ROAD",
+year:"2025",
+cc:"300cc",
+price:8900,
+tag:"TRAIL",
+image:"https://tse1.mm.bing.net/th/id/OIP.McoOARkUrkgfhDK3tm-a0gHaEe?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+description:"Explore the trails with this off-road bike."
+},
+
+{
+id:9,
+brand:"KTM",
+name:"690 ENDURO R",
+category:"Adventure",
+year:"2025",
+cc:"390cc",
+price:12500,
+tag:"ADVENTURE",
+image:"https://images5.1000ps.net/images_bikekat/2024/1-KTM/7338-390_Duke/006-638283046582699727-ktm-390-duke.jpg",
+description:"Adventure motorcycle for long journeys."
+}
+
+];
+
+// ====================================
+// WEBSITE FUNCTIONS
+// ====================================
+
+let filter="All";
+let cart=[];
+
+function render(){
+
+const q=document.getElementById("search").value.toLowerCase();
+
+const list=bikes.filter(b=>
+(filter==="All"||b.category===filter) &&
+(b.name+" "+b.brand+" "+b.cc).toLowerCase().includes(q)
+);
+
+document.getElementById("bikeGrid").innerHTML=list.map(b=>`
+
+<div class="bike">
+<div class="bikeimg">
+<span class="badge">${b.tag}</span>
+<img src="${b.image}" alt="${b.name}">
+</div>
+<div class="bikeinfo">
+<div class="brand">${b.brand}</div>
+<h3>${b.name}</h3>
+<div class="specs">
+<span>${b.year}</span>
+<span>${b.cc}</span>
+<span>${b.category}</span>
+</div>
+<div class="price">$${b.price.toLocaleString()} <small>USD</small></div>
+<div class="bikebottom">
+<button class="details" onclick="showDetails(${b.id})">VIEW DETAILS</button>
+<button class="redbtn" onclick="addCart(${b.id})">+ CART</button>
+</div>
+</div>
+</div>
+
+`).join("") || "<p>No motorcycles found.</p>";
+
+}
+
+function setFilter(value,btn){
+
+filter=value;
+
+document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+
+if(btn)btn.classList.add("active");
+
+render();
+
+}
+
+document.getElementById("search").addEventListener("input",render);
+
+function showDetails(id){
+
+const b=bikes.find(x=>x.id===id);
+
+document.getElementById("detailsContent").innerHTML=`
+<img src="${b.image}" alt="${b.name}">
+<div class="brand">${b.brand}</div>
+<h2>${b.name}</h2>
+<p>${b.description}</p>
+<p>Year: ${b.year}<br>Engine: ${b.cc}<br>Category: ${b.category}</p>
+<div class="price">$${b.price.toLocaleString()} USD</div>
+<br>
+<button class="redbtn" onclick="addCart(${b.id});closeModal('detailsModal')">ADD TO CART</button>
+`;
+
+document.getElementById("detailsModal").classList.add("show");
+
+}
+
+function addCart(id){
+
+const b=bikes.find(x=>x.id===id);
+const existing=cart.find(x=>x.id===id);
+
+if(existing)existing.qty++;
+else cart.push({...b,qty:1});
+
+updateCart();
+
+}
+
+function updateCart(){
+
+document.getElementById("count").textContent=
+cart.reduce((a,b)=>a+b.qty,0);
+
+document.getElementById("cartItems").innerHTML=cart.length?
+cart.map(b=>`
+<div class="cartrow">
+<span>${b.name} × ${b.qty}</span>
+<b>$${(b.price*b.qty).toLocaleString()}</b>
+</div>
+`).join(""):"<p>Your cart is empty.</p>";
+
+document.getElementById("total").textContent="$"+
+cart.reduce((a,b)=>a+b.price*b.qty,0).toLocaleString();
+
+}
+
+function openCart(){
+document.getElementById("cartModal").classList.add("show");
+}
+
+function closeModal(id){
+document.getElementById(id).classList.remove("show");
+}
+
+function checkout(){
+
+if(!cart.length){
+alert("Your cart is empty!");
+return;
+}
+
+const message="Hello, I am interested in these bikes:\n"+
+cart.map(b=>b.name+" x"+b.qty+" - $"+b.price*b.qty).join("\n")+
+"\nTotal: $"+cart.reduce((a,b)=>a+b.price*b.qty,0);
+
+// CHANGE YOUR WHATSAPP NUMBER HERE
+const phone="96100000000";
+
+window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank");
+
+}
+
+render();
+updateCart();
+
+</script>
+</body>
+</html>
